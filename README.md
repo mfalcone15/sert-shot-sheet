@@ -1,4 +1,4 @@
-# SERT Digital Shot Sheet — 0.8.3
+# SERT Digital Shot Sheet — 0.8.4
 
 Standalone administrative test build for GitHub Pages. Replaces 0.8.1. Photograph and supporting-image attachment works again: the chosen files are kept, shown on the report, and printed on their own pages.
 
@@ -25,3 +25,6 @@ This is not an approved operational form and not a safety determination.
 
 ## Mobile photograph update
 Separate camera and library buttons, responsive previews, captions, reordering, attachment count and processing feedback. The existing 12-photo limit and storage format are unchanged. Export a backup before updating. Test camera and library on your phone after deployment.
+
+## PDF update
+Every generated PDF page has the requested report title and centered page number. The worksheet, calculated results, and calculation notes are excluded from PDF and print preview; the application worksheet is unchanged.

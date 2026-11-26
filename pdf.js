@@ -34,7 +34,9 @@ async function makeReportPDF(r) {
   function finish() {
     ctx.fillStyle = "#5e5644";
     ctx.font = "22px Arial";
-    ctx.fillText("Administrative test build 0.8.3  |  Page " + (pages.length + 1), M, 1520);
+    ctx.textAlign = "center";
+    ctx.fillText("Page " + (pages.length + 1), W / 2, 1520);
+    ctx.textAlign = "left";
     var raw = atob(c.toDataURL("image/jpeg", 0.92).split(",")[1]);
     pages.push({ w: W, h: H, bytes: Uint8Array.from(raw, function (ch) { return ch.charCodeAt(0); }) });
   }
@@ -47,7 +49,9 @@ async function makeReportPDF(r) {
     ctx.fillRect(0, 0, W, H);
     ctx.fillStyle = "#1e2820";
     ctx.font = "bold 36px Arial";
-    ctx.fillText(title, M, 100);
+    ctx.fillText("Pennsylvania State Police Breacher Report", M, 82);
+    ctx.font = "24px Arial";
+    ctx.fillText(title, M, 116);
     ctx.strokeStyle = "#c4a36a";
     ctx.lineWidth = 3;
     ctx.beginPath();
@@ -80,31 +84,7 @@ async function makeReportPDF(r) {
   }
   start("BREACHER'S REPORT");
   reportFields(r).forEach(function (pair) { write(pair[0], true); write(pair[1] || "—"); });
-  write("CHARGE WORKSHEET", true);
-  var used = (r.explosives || []).filter(function (line) { return line.type || line.amount || line.grains; });
-  if (!used.length) write("No explosive lines recorded.");
-  used.forEach(function (line, i) {
-    write((i + 1) + ". " + (line.type || "Explosive") + "  |  " + (line.amount || "—") + "  |  " + (line.grains || "—") + " gr");
-  });
-  var work = Charge.buildWork(r);
-  if (work.figures) write("Total grains: " + Charge.formatGrains(work.figures.totalGrains));
-  work.steps.forEach(function (step) {
-    write(step.title, true);
-    write(step.formula);
-    write(step.expression ? step.expression + " = " + step.result : step.result);
-    if (step.note) write(step.note);
-  });
-  write(work.figures ? Charge.statusCopy(work.figures.status) : "No grain weight recorded. Worksheet not run.");
-  write("Worksheet formulas only. Not an approved safety determination.");
-  if (r.legacyResults && !work.figures) {
-    write("PREVIOUSLY RECORDED RESULTS", true);
-    write("Total grains: " + (r.resultGrains || "—"));
-    write("LBS: " + (r.resultLbs || "—"));
-    write("LBS TNT: " + (r.resultTnt || "—"));
-    write("MSD (ft): " + (r.resultMsd || "—"));
-    write("PSI: " + (r.resultPsi || "—"));
-  }
-  outcomeFields(r).forEach(function (pair) { write(pair[0], true); write(pair[1] || "—"); });
+  outcomeFields(r).filter(function (pair) { return pair[0] !== "Additional calculation notes"; }).forEach(function (pair) { write(pair[0], true); write(pair[1] || "—"); });
   finish();
   for (var i = 0; i < (r.images || []).length; i++) {
     var p = r.images[i];

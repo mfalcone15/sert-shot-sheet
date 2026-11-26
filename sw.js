@@ -1,4 +1,4 @@
-const CACHE = "shot-sheet-v083";
+const CACHE = "shot-sheet-v084";
 const FILES = ["./index.html", "./styles.css", "./charge.js", "./pdf.js", "./app.js", "./manifest.json", "./icon.png", "./icon512.png", "./sert-wings.png", "./apple-touch-icon.png", "./favicon.svg"];
 self.addEventListener("install", function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(FILES); }).then(function () { return self.skipWaiting(); }));

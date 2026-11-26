@@ -761,18 +761,11 @@ function printReport(r) {
     finally { pdfBtn.disabled = false; pdfBtn.textContent = "Generate PDF"; }
   }, tools, "primary");
   btn("Duplicate", () => { document.body.classList.remove("previewing"); duplicate(r); }, tools, "ghost");
-  el("h2", "Pennsylvania State Police breacher’s report", p);
+  el("h2", "Pennsylvania State Police Breacher Report", p);
   if (r.status === "Completed") el("p", "Locked report", p);
   identityPairs(r).forEach((pair) => block(p, pair[0], pair[1]));
-  el("h2", "Charge worksheet", p);
-  const used = (r.explosives || []).filter((line) => line.type || line.amount || line.grains);
-  if (!used.length) el("p", "No explosive lines recorded.", p);
-  used.forEach((line) => el("p", (line.type || "Explosive") + (line.amount ? " · " + line.amount : "") + " — " + (line.grains || "—") + " gr", p));
-  const host = el("div", null, p);
-  renderWork(host, r);
   el("h2", "Results", p);
-  outcomeFields(r).forEach((pair) => block(p, pair[0], pair[1]));
-  el("p", "Worksheet formulas only. Not an approved safety determination.", p).className = "muted";
+  outcomeFields(r).filter((pair) => pair[0] !== "Additional calculation notes").forEach((pair) => block(p, pair[0], pair[1]));
   if (!(r.images || []).length) el("p", "No photographs attached.", p);
   (r.images || []).forEach((img, i) => {
     const page = el("div", null, p);
