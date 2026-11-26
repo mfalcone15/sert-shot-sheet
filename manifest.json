@@ -1,0 +1,12 @@
+{
+  "name": "Digital Shot Sheet",
+  "short_name": "Shot Sheet",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#eae3d4",
+  "theme_color": "#3b4628",
+  "icons": [
+    { "src": "icon.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

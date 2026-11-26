@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3b4628">
+  <title>Digital Shot Sheet</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <img src="sert-wings.png" alt="SERT wings">
+      <p class="kicker">PENNSYLVANIA STATE POLICE</p>
+      <h1>Digital Shot Sheet</h1>
+      <p>SERT · Administrative test build 0.8.2</p>
+    </header>
+    <nav class="no-print">
+      <button type="button" data-view="home">Home</button>
+      <button type="button" data-view="edit">New</button>
+      <button type="button" data-view="library">Reports</button>
+      <button type="button" data-view="crew">Roster</button>
+      <button type="button" data-view="backup">Backup</button>
+    </nav>
+    <p id="notice" class="no-print" role="status"></p>
+    <div id="view"></div>
+  </main>
+  <div id="print"></div>
+  <script src="charge.js"></script>
+  <script src="pdf.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
