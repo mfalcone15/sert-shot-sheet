@@ -762,7 +762,6 @@ function printReport(r) {
   }, tools, "primary");
   btn("Duplicate", () => { document.body.classList.remove("previewing"); duplicate(r); }, tools, "ghost");
   el("h2", "Pennsylvania State Police breacher’s report", p);
-  el("p", "ADMINISTRATIVE TEST REPORT — NOT AN OFFICIAL FORM", p).className = "muted";
   if (r.status === "Completed") el("p", "Locked report", p);
   identityPairs(r).forEach((pair) => block(p, pair[0], pair[1]));
   el("h2", "Charge worksheet", p);

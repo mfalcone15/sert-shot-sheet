@@ -1,4 +1,4 @@
-# SERT Digital Shot Sheet — 0.8.2
+# SERT Digital Shot Sheet — 0.8.3
 
 Standalone administrative test build for GitHub Pages. Replaces 0.8.1. Photograph and supporting-image attachment works again: the chosen files are kept, shown on the report, and printed on their own pages.
 

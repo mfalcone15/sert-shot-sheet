@@ -34,7 +34,7 @@ async function makeReportPDF(r) {
   function finish() {
     ctx.fillStyle = "#5e5644";
     ctx.font = "22px Arial";
-    ctx.fillText("Administrative test build 0.8.2  |  Page " + (pages.length + 1), M, 1520);
+    ctx.fillText("Administrative test build 0.8.3  |  Page " + (pages.length + 1), M, 1520);
     var raw = atob(c.toDataURL("image/jpeg", 0.92).split(",")[1]);
     pages.push({ w: W, h: H, bytes: Uint8Array.from(raw, function (ch) { return ch.charCodeAt(0); }) });
   }
@@ -48,16 +48,13 @@ async function makeReportPDF(r) {
     ctx.fillStyle = "#1e2820";
     ctx.font = "bold 36px Arial";
     ctx.fillText(title, M, 100);
-    ctx.font = "24px Arial";
-    ctx.fillStyle = "#3b4628";
-    ctx.fillText("ADMINISTRATIVE TEST REPORT — NOT AN OFFICIAL FORM", M, 146);
     ctx.strokeStyle = "#c4a36a";
     ctx.lineWidth = 3;
     ctx.beginPath();
-    ctx.moveTo(M, 172);
-    ctx.lineTo(W - M, 172);
+    ctx.moveTo(M, 126);
+    ctx.lineTo(W - M, 126);
     ctx.stroke();
-    y = 220;
+    y = 174;
   }
   function lines(text, width) {
     var out = [];
